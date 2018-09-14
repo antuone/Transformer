@@ -1,17 +1,40 @@
 {
     "manifest_version": 2,
-
     "name": "Трансформер",
-    "description": "Изменяет страницы",
+    "permissions": [
+        "tabs",
+        "notifications",
+        "http://*/",
+        "https://*/"
+    ],
+    "description": "Удаляет рекламу, добавляет функционала",
     "version": "1.0",
     "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
     },
     "content_scripts": [
         {
-            "matches": [ "*://*/*" ],
-            "js": [ "content.js" ]
+            "matches": [
+                "*://audioknigi.club/*",
+                "*://cab.autoinline.com/*",
+                "*://mail.yandex.ru/*",
+                "*://music.yandex.ru/*",
+                "*://sweetbook.net/*",
+                "*://tapochek.net/*",
+                "*://www.lostfilm.tv/*",
+                "*://www.tvigle.ru/*",
+                "*://www.youtube.com/*"
+            ],
+            "js": [
+                "functions.js",
+                "content.js"
+            ]
         }
     ]
 }
